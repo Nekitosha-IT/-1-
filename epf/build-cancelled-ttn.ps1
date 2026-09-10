@@ -1,11 +1,19 @@
 $ErrorActionPreference = 'Stop'
 
 $EpRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
-$Patch = Join-Path $EpRoot 'patch-cancelled-ttn-ui.ps1'
-if (Test-Path -LiteralPath $Patch) {
+$PatchRunner = Join-Path $EpRoot 'run-patch-utf8.ps1'
+if (Test-Path -LiteralPath $PatchRunner) {
     Write-Host 'Applying cancelled TTN UI/UTM patch...'
-    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Patch
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $PatchRunner
     if ($LASTEXITCODE -ne 0) { throw "Patch script failed: $LASTEXITCODE" }
+}
+else {
+    $Patch = Join-Path $EpRoot 'patch-cancelled-ttn-ui.ps1'
+    if (Test-Path -LiteralPath $Patch) {
+        Write-Host 'Patch runner not found; executing patch directly...'
+        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Patch
+        if ($LASTEXITCODE -ne 0) { throw "Patch script failed: $LASTEXITCODE" }
+    }
 }
 
 $V8 = 'C:\Program Files\1cv8\8.3.27.2130\bin\1cv8.exe'
