@@ -1,9 +1,17 @@
 $ErrorActionPreference = 'Stop'
 
+$EpRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
+$Patch = Join-Path $EpRoot 'patch-cancelled-ttn-ui.ps1'
+if (Test-Path -LiteralPath $Patch) {
+    Write-Host 'Applying cancelled TTN UI/UTM patch...'
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Patch
+    if ($LASTEXITCODE -ne 0) { throw "Patch script failed: $LASTEXITCODE" }
+}
+
 $V8 = 'C:\Program Files\1cv8\8.3.27.2130\bin\1cv8.exe'
-$Root = Join-Path (Split-Path -Parent $MyInvocation.MyCommand.Path) 'EgaisCancelledTTN2026'
-$Meta = Join-Path (Split-Path -Parent $MyInvocation.MyCommand.Path) 'EgaisCancelledTTN2026.xml'
-$Dist = Join-Path (Split-Path -Parent $MyInvocation.MyCommand.Path) 'dist'
+$Root = Join-Path $EpRoot 'EgaisCancelledTTN2026'
+$Meta = Join-Path $EpRoot 'EgaisCancelledTTN2026.xml'
+$Dist = Join-Path $EpRoot 'dist'
 $Log = Join-Path $Dist 'EgaisCancelledTTN2026-build.log'
 $OutEpf = Join-Path $Dist 'EgaisCancelledTTN2026.epf'
 
