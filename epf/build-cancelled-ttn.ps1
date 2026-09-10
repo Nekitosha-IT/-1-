@@ -3,7 +3,6 @@ $ErrorActionPreference = 'Stop'
 $Root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $V8 = 'C:\Program Files\1cv8\8.3.27.2130\bin\1cv8.exe'
 $Meta = Join-Path $Root 'EgaisCancelledTTN2026.xml'
-$Module = Join-Path $Root 'EgaisCancelledTTN2026\Forms\Форма\Ext\Form\Module.bsl'
 $Dist = Join-Path $Root 'dist'
 $Log = Join-Path $Dist 'EgaisCancelledTTN2026-build.log'
 $OutEpf = Join-Path $Dist 'EgaisCancelledTTN2026.epf'
@@ -14,19 +13,31 @@ if (!(Test-Path -LiteralPath $V8)) {
 if (!(Test-Path -LiteralPath $Meta)) {
     throw "Metadata XML not found: $Meta"
 }
-if (!(Test-Path -LiteralPath $Module)) {
-    throw "Form module not found: $Module"
+
+# Do not hard-code the Cyrillic form directory name here. PowerShell encoding
+# can corrupt it on systems with a different console/code-page configuration.
+$Modules = @(Get-ChildItem -LiteralPath (Join-Path $Root 'EgaisCancelledTTN2026') -Recurse -File -Filter 'Module.bsl' -ErrorAction SilentlyContinue)
+if ($Modules.Count -eq 0) {
+    throw "Form module not found under: $(Join-Path $Root 'EgaisCancelledTTN2026')"
 }
+if ($Modules.Count -gt 1) {
+    $Module = ($Modules | Where-Object { $_.FullName -match '\\Forms\\[^\\]+\\Ext\\Form\\Module\.bsl$' } | Select-Object -First 1).FullName
+    if ([string]::IsNullOrWhiteSpace($Module)) {
+        $Module = $Modules[0].FullName
+    }
+} else {
+    $Module = $Modules[0].FullName
+}
+Write-Host "Form module: $Module"
 
 New-Item -ItemType Directory -Force -Path $Dist | Out-Null
 Remove-Item -LiteralPath $OutEpf -Force -ErrorAction SilentlyContinue
 Remove-Item -LiteralPath $Log -Force -ErrorAction SilentlyContinue
 
-# 1C query text must contain real line breaks (or use Символы.ПС).
-# Older generated source used the two characters \n inside BSL string literals.
-# Normalize those sequences before Designer imports the external processor.
+# Normalize old generated BSL that contains the two literal characters \n
+# inside a string. 1C query text must contain actual line breaks.
 $Source = [System.IO.File]::ReadAllText($Module, [System.Text.Encoding]::UTF8)
-$Fixed = $Source -replace '\\n" \+', '" + Символы.ПС +'
+$Fixed = $Source -replace '\\n"\s*\+', '" + Символы.ПС +'
 if ($Fixed -ne $Source) {
     $Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
     [System.IO.File]::WriteAllText($Module, $Fixed, $Utf8NoBom)
