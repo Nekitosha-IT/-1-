@@ -6,6 +6,9 @@ $Dist = Join-Path $Root 'dist'
 $Log = Join-Path $Dist 'build.log'
 $MetaName = 'EgaisRequestRepealWB2026.xml'
 $OutName = 'EgaisRequestRepealWB2026.epf'
+$Server = 'localhost\roz2026'
+$User = 'Администратор'
+$Password = ''
 
 if (!(Test-Path -LiteralPath $V8)) {
     throw "1C executable not found: $V8"
@@ -24,16 +27,20 @@ Remove-Item -LiteralPath $Log -Force -ErrorAction SilentlyContinue
 $arguments = @(
     'DESIGNER'
     '/DisableStartupDialogs'
+    "/S$Server"
+    "/N$User"
+    "/P$Password"
     '/Out', $Log
     '/LoadExternalDataProcessorOrReportFromFiles', $Meta, $OutEpf
 )
 
 Write-Host "1C: $V8"
+Write-Host "Infobase: $Server"
 Write-Host "Metadata: $Meta"
 Write-Host "Output: $OutEpf"
 
-& $V8 @arguments
-$exitCode = $LASTEXITCODE
+$process = Start-Process -FilePath $V8 -ArgumentList $arguments -Wait -PassThru
+$exitCode = $process.ExitCode
 
 Write-Host "EXIT CODE: $exitCode"
 
