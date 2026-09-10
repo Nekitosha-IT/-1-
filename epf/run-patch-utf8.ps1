@@ -1,6 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
-$Patch = Join-Path $PSScriptRoot 'patch-cancelled-ttn-ui.ps1'
+$OriginalRoot = $PSScriptRoot
+$Patch = Join-Path $OriginalRoot 'patch-cancelled-ttn-ui.ps1'
 if (!(Test-Path -LiteralPath $Patch)) { throw "Patch script not found: $Patch" }
 
 # Windows PowerShell 5.1 treats a UTF-8 script without BOM as ANSI.
@@ -16,7 +17,7 @@ if (!$hasBom) {
         [Array]::Copy($bom, 0, $out, 0, $bom.Length)
         [Array]::Copy($bytes, 0, $out, $bom.Length, $bytes.Length)
         [IO.File]::WriteAllBytes($tmp, $out)
-        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp
+        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp -EpRoot $OriginalRoot
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     }
     finally {
@@ -24,6 +25,6 @@ if (!$hasBom) {
     }
 }
 else {
-    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Patch
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Patch -EpRoot $OriginalRoot
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
