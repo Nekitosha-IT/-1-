@@ -24,8 +24,12 @@
     ИначеЕсли Лев(НРег(Адрес), 8) = "https://" Тогда
         Адрес = Сред(Адрес, 9);
     КонецЕсли;
+
     ПозицияСлеша = СтрНайти(Адрес, "/");
-    Если ПозицияСлеша > 0 Тогда Адрес = Лев(Адрес, ПозицияСлеша - 1); КонецЕсли;
+    Если ПозицияСлеша > 0 Тогда
+        Адрес = Лев(Адрес, ПозицияСлеша - 1);
+    КонецЕсли;
+
     ПозицияДвоеточия = СтрНайти(Адрес, ":");
     Если ПозицияДвоеточия > 0 Тогда
         Сервер = Лев(Адрес, ПозицияДвоеточия - 1);
@@ -34,8 +38,9 @@
         Сервер = Адрес;
         Порт = 8080;
     КонецЕсли;
-    XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-        + "<ns:Documents Version=\"1.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ns=\"http://fsrar.ru/WEGAIS/WB_DOC_SINGLE_01\" xmlns:qp=\"http://fsrar.ru/WEGAIS/RequestRepealWB\">"
+
+    XML = "<?xml version=""1.0"" encoding=""UTF-8""?>"
+        + "<ns:Documents Version=""1.0"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:ns=""http://fsrar.ru/WEGAIS/WB_DOC_SINGLE_01"" xmlns:qp=""http://fsrar.ru/WEGAIS/RequestRepealWB"">"
         + "<ns:Owner><ns:FSRAR_ID>" + FSRAR_IDПараметр + "</ns:FSRAR_ID></ns:Owner>"
         + "<ns:Document><ns:RequestRepealWB>"
         + "<qp:ClientId>" + FSRAR_IDПараметр + "</qp:ClientId>"
@@ -43,15 +48,18 @@
         + "<qp:RequestDate>" + Формат(ТекущаяДата(), "ДФ=yyyy-MM-dd'T'HH:mm:ss") + "</qp:RequestDate>"
         + "<qp:WBRegId>" + WBRegIdПараметр + "</qp:WBRegId>"
         + "</ns:RequestRepealWB></ns:Document></ns:Documents>";
+
     Граница = "----EgaisRepealWB2026";
     Тело = "--" + Граница + Символы.ПС
-        + "Content-Disposition: form-data; name=\"xml_file\"; filename=\"RequestRepealWB.xml\"" + Символы.ПС
+        + "Content-Disposition: form-data; name=""xml_file""; filename=""RequestRepealWB.xml""" + Символы.ПС
         + "Content-Type: application/xml; charset=UTF-8" + Символы.ПС + Символы.ПС
         + XML + Символы.ПС + "--" + Граница + "--" + Символы.ПС;
+
     Запрос = Новый HTTPЗапрос("/opt/in/RequestRepealWB");
     Запрос.Метод = "POST";
     Запрос.Заголовки.Вставить("Content-Type", "multipart/form-data; boundary=" + Граница);
     Запрос.УстановитьТелоИзСтроки(Тело, КодировкаТекста.UTF8);
+
     Попытка
         Соединение = Новый HTTPСоединение(Сервер, Порт, , , , 30);
         Ответ = Соединение.ОтправитьДляОбработки(Запрос);
