@@ -22,7 +22,6 @@ $insert = @'
     Если Не ПустаяСтрока(АдресУТМ) Тогда
         Значения.Добавить(АдресУТМ, "Текущий адрес: " + АдресУТМ);
     КонецЕсли;
-
     Выбранное = Значения.ВыбратьЭлемент("Выберите УТМ");
     Если Выбранное = Неопределено Тогда Возврат; КонецЕсли;
     АдресУТМ = Выбранное.Значение;
@@ -37,7 +36,6 @@ $insert = @'
         Результат = "Сначала выберите или укажите адрес УТМ.";
         Возврат;
     КонецЕсли;
-
     Ответ = ПолучитьСтатусыУТМНаСервере(АдресУТМ, ТаймаутУТМ);
     Если Ответ = Неопределено ИЛИ Не Ответ.Успешно Тогда
         УТМДоступен = Ложь;
@@ -45,7 +43,6 @@ $insert = @'
         Результат = ?(Ответ = Неопределено, "УТМ не вернул результат.", Ответ.Сообщение);
         Возврат;
     КонецЕсли;
-
     УТМДоступен = Истина;
     Результат = "УТМ доступен. HTTP-запрос выполнен успешно. Документов в ответе: " + Строка(Ответ.ТТН.Количество()) + ".";
 КонецПроцедуры
@@ -56,13 +53,11 @@ $insert = @'
         Результат = "Список ТТН пуст. Сначала нажмите «Получить данные из УТМ».";
         Возврат;
     КонецЕсли;
-
     ТекущиеДанные = Элементы.ТТН.ТекущиеДанные;
     Если ТекущиеДанные = Неопределено Тогда
         Результат = "Выберите строку ТТН в таблице.";
         Возврат;
     КонецЕсли;
-
     ВыбраннаяТТН = ТекущиеДанные.НомерТТН;
     Результат = "Выбрана ТТН: " + ВыбраннаяТТН + ". Теперь действие исправления будет выполнено только для неё.";
 КонецПроцедуры
@@ -83,7 +78,7 @@ if ($f -notmatch 'name="ВыбраннаяТТН"') {
 if ($f -notmatch 'Command name="ВыбратьУТМ"') {
     $buttons = '      <Button name="ВыбратьУТМ" id="30"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать УТМ</v8:content></v8:item></Title><CommandName>Form.Command.ВыбратьУТМ</CommandName></Button>' + [Environment]::NewLine +
                '      <Button name="ПроверитьУТМ" id="31"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Проверить УТМ</v8:content></v8:item></Title><CommandName>Form.Command.ПроверитьУТМ</CommandName></Button>' + [Environment]::NewLine +
-               '      <Button name="ВыбратьТТН" id="32"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8</v8:lang><v8:content>Выбрать ТТН</v8:content></v8:item></Title><CommandName>Form.Command.ВыбратьТТН</CommandName></Button>' + [Environment]::NewLine
+               '      <Button name="ВыбратьТТН" id="32"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать ТТН</v8:content></v8:item></Title><CommandName>Form.Command.ВыбратьТТН</CommandName></Button>' + [Environment]::NewLine
     $needle = '      <Button name="Получить" id="5">'
     $f = $f.Replace($needle, $buttons + $needle)
 }
