@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" version="2.17">
+  <Title><v8:item><v8:lang>ru</v8:lang><v8:content>ЕГАИС — Контроль отменённых ТТН</v8:content></v8:item></Title>
+  <AutoTitle>false</AutoTitle>
+  <AutoCommandBar name="ФормаКоманднаяПанель" id="-1"><Autofill>false</Autofill></AutoCommandBar>
+  <ChildItems>
+    <UsualGroup name="Настройки" id="1"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>УТМ</v8:content></v8:item></Title><Representation>None</Representation><ShowTitle>true</ShowTitle><ChildItems>
+      <InputField name="АдресУТМПоле" id="2"><DataPath>АдресУТМ</DataPath><TitleLocation>Left</TitleLocation><Width>40</Width></InputField>
+      <InputField name="Таймаут" id="3"><DataPath>ТаймаутУТМ</DataPath><TitleLocation>Left</TitleLocation><Width>10</Width></InputField>
+    </ChildItems></UsualGroup>
+    <UsualGroup name="Команды" id="4"><Representation>None</Representation><ShowTitle>false</ShowTitle><ChildItems>
+      <Button name="Получить" id="5"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Получить данные из УТМ</v8:content></v8:item></Title><CommandName>Form.Command.ПолучитьДанныеИзУТМ</CommandName></Button>
+      <Button name="РаспроводитьПометить" id="6"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Распроводить и пометить</v8:content></v8:item></Title><CommandName>Form.Command.РаспроводитьИПометить</CommandName></Button>
+      <Button name="ТолькоРаспроводить" id="7"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Только распроводить</v8:content></v8:item></Title><CommandName>Form.Command.ТолькоРаспроводить</CommandName></Button>
+      <Button name="Отчет" id="8"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Сформировать отчёт</v8:content></v8:item></Title><CommandName>Form.Command.СформироватьОтчет</CommandName></Button>
+    </ChildItems></UsualGroup>
+    <Table name="ТТН" id="10"><DataPath>ТаблицаТТН</DataPath><Representation>List</Representation><TitleLocation>Top</TitleLocation><HeightInTableRows>12</HeightInTableRows><Header>true</Header><Footer>false</Footer><HorizontalLines>true</HorizontalLines><VerticalLines>true</VerticalLines><UseAlternationRowColor>true</UseAlternationRowColor><SelectionMode>SingleRow</SelectionMode><ChangeRowSet>false</ChangeRowSet><ChangeRowOrder>false</ChangeRowOrder><AutoInsertNewRow>false</AutoInsertNewRow><CommandBarLocation>None</CommandBarLocation><ChildItems>
+      <LabelField name="Номер" id="11"><DataPath>ТаблицаТТН.НомерТТН</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+      <LabelField name="Дата" id="12"><DataPath>ТаблицаТТН.Дата</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+      <LabelField name="Контрагент" id="13"><DataPath>ТаблицаТТН.Контрагент</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+      <LabelField name="Статус1С" id="14"><DataPath>ТаблицаТТН.Статус1С</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+      <LabelField name="СтатусЕГАИС" id="15"><DataPath>ТаблицаТТН.СтатусЕГАИС</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+      <LabelField name="Расхождение" id="16"><DataPath>ТаблицаТТН.Расхождение</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+      <LabelField name="Причина" id="17"><DataPath>ТаблицаТТН.Причина</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+    </ChildItems></Table>
+    <LabelField name="Результат" id="18"><DataPath>Результат</DataPath><TitleLocation>None</TitleLocation></LabelField>
+    <UsualGroup name="Журнал" id="20"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Исправление ТТН</v8:content></v8:item></Title><Representation>None</Representation><ShowTitle>true</ShowTitle><ChildItems>
+      <Table name="ЖурналИсправленийТаблица" id="21"><DataPath>ЖурналИсправлений</DataPath><Representation>List</Representation><TitleLocation>Top</TitleLocation><HeightInTableRows>8</HeightInTableRows><Header>true</Header><Footer>false</Footer><HorizontalLines>true</HorizontalLines><VerticalLines>true</VerticalLines><UseAlternationRowColor>true</UseAlternationRowColor><SelectionMode>SingleRow</SelectionMode><ChangeRowSet>false</ChangeRowSet><ChangeRowOrder>false</ChangeRowOrder><AutoInsertNewRow>false</AutoInsertNewRow><CommandBarLocation>None</CommandBarLocation><ChildItems>
+        <LabelField name="Время" id="22"><DataPath>ЖурналИсправлений.Время</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+        <LabelField name="ЖТТН" id="23"><DataPath>ЖурналИсправлений.НомерТТН</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+        <LabelField name="СтатусИсправления" id="24"><DataPath>ЖурналИсправлений.СтатусИсправления</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+        <LabelField name="Действие" id="25"><DataPath>ЖурналИсправлений.Действие</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+        <LabelField name="РезультатЖ" id="26"><DataPath>ЖурналИсправлений.Результат</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+      </ChildItems></Table>
+    </ChildItems></UsualGroup>
+  </ChildItems>
+  <Attributes>
+    <Attribute name="АдресУТМ" id="1"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Адрес УТМ</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>200</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Attribute>
+    <Attribute name="ТаймаутУТМ" id="2"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Таймаут, сек</v8:content></v8:item></Title><Type><v8:Type>xs:decimal</v8:Type><v8:NumberQualifiers><v8:Digits>3</v8:Digits><v8:FractionDigits>0</v8:FractionDigits></v8:NumberQualifiers></Type></Attribute>
+    <Attribute name="УТМДоступен" id="3"><Type><v8:Type>xs:boolean</v8:Type></Type></Attribute>
+    <Attribute name="СтатусыПолучены" id="4"><Type><v8:Type>xs:boolean</v8:Type></Type></Attribute>
+    <Attribute name="Результат" id="5"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Результат</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>4000</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Attribute>
+    <Attribute name="ТаблицаТТН" id="6"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>ТТН</v8:content></v8:item></Title><Type><v8:Type>v8:ValueTable</v8:Type></Type><Columns>
+      <Column name="НомерТТН" id="1"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Номер ТТН</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>100</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      <Column name="Дата" id="2"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>50</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      <Column name="Контрагент" id="3"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>300</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      <Column name="Статус1С" id="4"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>200</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      <Column name="СтатусЕГАИС" id="5"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>200</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      <Column name="Расхождение" id="6"><Type><v8:Type>xs:boolean</v8:Type></Type></Column>
+      <Column name="WBRegId" id="7"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>150</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      <Column name="ОтмененаПоставщиком" id="8"><Type><v8:Type>xs:boolean</v8:Type></Type></Column>
+      <Column name="Документ1С" id="9"><Type/></Column>
+      <Column name="Причина" id="10"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>1000</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+    </Columns></Attribute>
+    <Attribute name="ЖурналИсправлений" id="7"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Журнал исправлений</v8:content></v8:item></Title><Type><v8:Type>v8:ValueTable</v8:Type></Type><Columns>
+      <Column name="Время" id="1"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>30</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      <Column name="НомерТТН" id="2"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>100</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      <Column name="WBRegId" id="3"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>150</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      <Column name="Контрагент" id="4"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>300</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      <Column name="СтатусИсправления" id="5"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>100</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      <Column name="Действие" id="6"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>200</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      <Column name="Результат" id="7"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>1000</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+    </Columns></Attribute>
+  </Attributes>
+  <Commands>
+    <Command name="ПолучитьДанныеИзУТМ" id="1"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Получить данные из УТМ</v8:content></v8:item></Title><Action>ПолучитьДанныеИзУТМ</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
+    <Command name="РаспроводитьИПометить" id="2"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Распроводить и пометить</v8:content></v8:item></Title><Action>РаспроводитьИПометить</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
+    <Command name="ТолькоРаспроводить" id="3"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Только распроводить</v8:content></v8:item></Title><Action>ТолькоРаспроводить</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
+    <Command name="СформироватьОтчет" id="4"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Сформировать отчёт</v8:content></v8:item></Title><Action>СформироватьОтчет</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
+  </Commands>
+</Form>
