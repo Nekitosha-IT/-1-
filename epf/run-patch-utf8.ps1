@@ -15,6 +15,13 @@ if (!$hasBom) {
     $text = [Text.Encoding]::UTF8.GetString($bytes)
     $safeRoot = $OriginalRoot.Replace("'", "''")
     $text = $text.Replace('$PSScriptRoot', "'$safeRoot'")
+
+    # The UI patch currently uses a base64 marker for the target procedure.
+    # Normalize that marker to the exact procedure header present in Module.bsl.
+    $oldMarker = "JtCd0LDQmtC70LjQtdC90YLQtQrQn9GA0L7RhtC10LTRg9GA0LAg0J/QvtC70YPRh9C40YLRjNCU0LDQvdC90YvQtdCY0LfQo9Ci0Jw="
+    $newMarker = "JtCd0LDQmtC70LjQtdC90YLQtQrQn9GA0L7RhtC10LTRg9GA0LAg0J/QvtC70YPRh9C40YLRjNCU0LDQvdC90YvQtdCY0LfQo9Ci0Jwo0JrQvtC80LDQvdC00LApCg=="
+    $text = $text.Replace($oldMarker, $newMarker)
+
     $tmp = Join-Path $env:TEMP ('egais-patch-' + [Guid]::NewGuid().ToString('N') + '.ps1')
     try {
         [IO.File]::WriteAllText($tmp, $text, (New-Object Text.UTF8Encoding($true)))
