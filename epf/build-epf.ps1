@@ -6,9 +6,6 @@ $Dist = Join-Path $Root 'dist'
 $Log = Join-Path $Dist 'build.log'
 $MetaName = 'EgaisRequestRepealWB2026.xml'
 $OutName = 'EgaisRequestRepealWB2026.epf'
-$Server = 'localhost\roz2026'
-$User = 'Администратор'
-$Password = ''
 
 if (!(Test-Path -LiteralPath $V8)) {
     throw "1C executable not found: $V8"
@@ -24,23 +21,29 @@ $OutEpf = Join-Path $Dist $OutName
 Remove-Item -LiteralPath $OutEpf -Force -ErrorAction SilentlyContinue
 Remove-Item -LiteralPath $Log -Force -ErrorAction SilentlyContinue
 
+# Build the Russian 1C user name without putting non-ASCII characters into this .ps1.
+$User = -join ([int[]](0x0410,0x0434,0x043C,0x0438,0x043D,0x0438,0x0441,0x0442,0x0440,0x0430,0x0442,0x043E,0x0440) | ForEach-Object { [char]$_ })
+$Password = ''
+$Server = 'localhost'
+$Infobase = 'roz2026'
+
 $arguments = @(
     'DESIGNER'
+    "/S${Server}\${Infobase}"
+    '/N', $User
+    '/P', $Password
     '/DisableStartupDialogs'
-    "/S$Server"
-    "/N$User"
-    "/P$Password"
     '/Out', $Log
     '/LoadExternalDataProcessorOrReportFromFiles', $Meta, $OutEpf
 )
 
 Write-Host "1C: $V8"
-Write-Host "Infobase: $Server"
+Write-Host "Infobase: ${Server}\${Infobase}"
 Write-Host "Metadata: $Meta"
 Write-Host "Output: $OutEpf"
 
-$process = Start-Process -FilePath $V8 -ArgumentList $arguments -Wait -PassThru
-$exitCode = $process.ExitCode
+$Process = Start-Process -FilePath $V8 -ArgumentList $arguments -Wait -PassThru -NoNewWindow
+$exitCode = $Process.ExitCode
 
 Write-Host "EXIT CODE: $exitCode"
 
