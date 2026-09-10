@@ -1,0 +1,7 @@
+epf/dist/
+*.epf
+*.log
+*.tmp
+*.bak
+.vscode/
+.idea/
