@@ -21,11 +21,24 @@ $OutEpf = Join-Path $Dist $OutName
 Remove-Item -LiteralPath $OutEpf -Force -ErrorAction SilentlyContinue
 Remove-Item -LiteralPath $Log -Force -ErrorAction SilentlyContinue
 
-# Use only ASCII in this PowerShell file. The standard 1C administrator name is passed as Unicode bytes.
-$User = [System.Text.Encoding]::Unicode.GetString([byte[]](0x10,0x04,0x34,0x04,0x3C,0x04,0x38,0x04,0x3D,0x04,0x38,0x04,0x41,0x04,0x42,0x04,0x40,0x04,0x30,0x04,0x42,0x04,0x3E,0x04,0x40,0x04))
-$Password = ''
 $Server = 'localhost'
 $Infobase = 'roz2026'
+
+# Do not hard-code a 1C infobase user. The previous default name was not present in this infobase.
+# Set environment variables EGAIS_1C_USER and EGAIS_1C_PASSWORD for unattended builds.
+$User = $env:EGAIS_1C_USER
+if ([string]::IsNullOrWhiteSpace($User)) {
+    $User = Read-Host '1C infobase user name'
+}
+
+$Password = $env:EGAIS_1C_PASSWORD
+if ($null -eq $Password) {
+    $Password = Read-Host '1C password (press Enter if empty)'
+}
+
+if ([string]::IsNullOrWhiteSpace($User)) {
+    throw '1C infobase user name is empty.'
+}
 
 # Avoid Start-Process ArgumentList array validation/quoting issues in Windows PowerShell 5.1.
 $Arguments = 'DESIGNER /DisableStartupDialogs /S"' + $Server + '\' + $Infobase + '" /N"' + $User + '" /P"' + $Password + '" /Out"' + $Log + '" /LoadExternalDataProcessorOrReportFromFiles "' + $Meta + '" "' + $OutEpf + '"'
@@ -34,6 +47,7 @@ Write-Host "1C: $V8"
 Write-Host "Infobase: ${Server}\${Infobase}"
 Write-Host "Metadata: $Meta"
 Write-Host "Output: $OutEpf"
+Write-Host "User: $User"
 
 $Process = Start-Process -FilePath $V8 -ArgumentList $Arguments -Wait -PassThru -NoNewWindow
 $exitCode = $Process.ExitCode
