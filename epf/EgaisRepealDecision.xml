@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses"
+    xmlns:app="http://v8.1c.ru/8.2/managed-application/core"
+    xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config"
+    xmlns:v8="http://v8.1c.ru/8.1/data/core"
+    xmlns:xr="http://v8.1c.ru/8.3/xcf/readable"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="2.17">
+    <ExternalDataProcessor uuid="7c3d9b2a-0b9d-4d2e-9b6e-2f1a7c8e4d31">
+        <InternalInfo>
+            <xr:ContainedObject>
+                <xr:ClassId>c3831ec8-d8d5-4f93-8a22-f9bfae07327f</xr:ClassId>
+                <xr:ObjectId>7c3d9b2a-0b9d-4d2e-9b6e-2f1a7c8e4d31</xr:ObjectId>
+            </xr:ContainedObject>
+            <xr:GeneratedType name="ExternalDataProcessorObject.EgaisRepealDecision" category="Object">
+                <xr:TypeId>0b4f6f1e-4f9c-4b3a-8e21-8e9f1a5d2c77</xr:TypeId>
+                <xr:ValueId>5d8a0c13-7e24-4c9a-a3d1-6f4e2b8c9015</xr:ValueId>
+            </xr:GeneratedType>
+        </InternalInfo>
+        <Properties>
+            <Name>EgaisRepealDecision</Name>
+            <Synonym>
+                <v8:item>
+                    <v8:lang>ru</v8:lang>
+                    <v8:content>Отмена решения ЕГАИС</v8:content>
+                </v8:item>
+            </Synonym>
+            <Comment>RequestRepealWB для отмены решения получателя по ТТН ЕГАИС</Comment>
+            <DefaultForm>ExternalDataProcessor.EgaisRepealDecision.Form.Форма</DefaultForm>
+            <AuxiliaryForm/>
+        </Properties>
+        <ChildObjects>
+            <Form>Форма</Form>
+        </ChildObjects>
+    </ExternalDataProcessor>
+</MetaDataObject>
