@@ -3,6 +3,7 @@ $ErrorActionPreference = 'Stop'
 $Root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $V8 = 'C:\Program Files\1cv8\8.3.27.2130\bin\1cv8.exe'
 $Meta = Join-Path $Root 'EgaisCancelledTTN2026.xml'
+$Module = Join-Path $Root 'EgaisCancelledTTN2026\Forms\Форма\Ext\Form\Module.bsl'
 $Dist = Join-Path $Root 'dist'
 $Log = Join-Path $Dist 'EgaisCancelledTTN2026-build.log'
 $OutEpf = Join-Path $Dist 'EgaisCancelledTTN2026.epf'
@@ -13,10 +14,24 @@ if (!(Test-Path -LiteralPath $V8)) {
 if (!(Test-Path -LiteralPath $Meta)) {
     throw "Metadata XML not found: $Meta"
 }
+if (!(Test-Path -LiteralPath $Module)) {
+    throw "Form module not found: $Module"
+}
 
 New-Item -ItemType Directory -Force -Path $Dist | Out-Null
 Remove-Item -LiteralPath $OutEpf -Force -ErrorAction SilentlyContinue
 Remove-Item -LiteralPath $Log -Force -ErrorAction SilentlyContinue
+
+# 1C query text must contain real line breaks (or use Символы.ПС).
+# Older generated source used the two characters \n inside BSL string literals.
+# Normalize those sequences before Designer imports the external processor.
+$Source = [System.IO.File]::ReadAllText($Module, [System.Text.Encoding]::UTF8)
+$Fixed = $Source -replace '\\n" \+', '" + Символы.ПС +'
+if ($Fixed -ne $Source) {
+    $Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+    [System.IO.File]::WriteAllText($Module, $Fixed, $Utf8NoBom)
+    Write-Host 'Patched BSL query line breaks: literal \\n -> Символы.ПС' -ForegroundColor Yellow
+}
 
 $Server = 'localhost'
 $Infobase = 'roz2026'
