@@ -1,170 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.17">
-  <Title>
-    <v8:item><v8:lang>ru</v8:lang><v8:content>ЕГАИС — Аннулирование ТТН</v8:content></v8:item>
-  </Title>
+  <Title><v8:item><v8:lang>ru</v8:lang><v8:content>ЕГАИС — контроль и исправление ТТН</v8:content></v8:item></Title>
   <AutoTitle>false</AutoTitle>
-  <AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-    <Autofill>false</Autofill>
-  </AutoCommandBar>
+  <AutoCommandBar name="ФормаКоманднаяПанель" id="-1"><Autofill>false</Autofill></AutoCommandBar>
   <ChildItems>
     <UsualGroup name="Подключение" id="1">
-      <Title>
-        <v8:item><v8:lang>ru</v8:lang><v8:content>Подключение к ЕГАИС</v8:content></v8:item>
-      </Title>
-      <Representation>None</Representation>
-      <ShowTitle>true</ShowTitle>
+      <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Подключение к ЕГАИС</v8:content></v8:item></Title>
+      <Representation>None</Representation><ShowTitle>true</ShowTitle>
       <ChildItems>
-        <InputField name="УТМ" id="2">
-          <DataPath>АдресУТМ</DataPath>
-          <TitleLocation>Left</TitleLocation>
-          <Width>35</Width>
-        </InputField>
-        <Button name="ВыбратьУТМ" id="3">
-          <Type>UsualButton</Type>
-          <Title>
-            <v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать УТМ</v8:content></v8:item>
-          </Title>
-          <CommandName>Form.Command.ВыбратьУТМ</CommandName>
-        </Button>
-        <InputField name="ФСРАР" id="4">
-          <DataPath>FSRAR_ID</DataPath>
-          <TitleLocation>Left</TitleLocation>
-          <Width>25</Width>
-        </InputField>
+        <InputField name="УТМ" id="2"><DataPath>АдресУТМ</DataPath><TitleLocation>Left</TitleLocation><Width>35</Width></InputField>
+        <Button name="ВыбратьУТМ" id="3"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать УТМ</v8:content></v8:item></Title><CommandName>Form.Command.ВыбратьУТМ</CommandName></Button>
+        <InputField name="ФСРАР" id="4"><DataPath>FSRAR_ID</DataPath><TitleLocation>Left</TitleLocation><Width>25</Width></InputField>
       </ChildItems>
     </UsualGroup>
 
-    <UsualGroup name="Накладная" id="5">
-      <Title>
-        <v8:item><v8:lang>ru</v8:lang><v8:content>Товарно-транспортная накладная</v8:content></v8:item>
-      </Title>
-      <Representation>None</Representation>
-      <ShowTitle>true</ShowTitle>
+    <UsualGroup name="Проверка" id="5">
+      <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Проверка ТТН</v8:content></v8:item></Title>
+      <Representation>None</Representation><ShowTitle>true</ShowTitle>
       <ChildItems>
-        <InputField name="ОписаниеНакладной" id="6">
-          <DataPath>ОписаниеНакладной</DataPath>
-          <TitleLocation>Left</TitleLocation>
-          <Width>55</Width>
-        </InputField>
-        <Button name="ВыбратьНакладную" id="7">
-          <Type>UsualButton</Type>
-          <Title>
-            <v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать накладную</v8:content></v8:item>
-          </Title>
-          <CommandName>Form.Command.ВыбратьНакладную</CommandName>
-        </Button>
-        <InputField name="ТТН" id="8">
-          <DataPath>WBRegId</DataPath>
-          <TitleLocation>Left</TitleLocation>
-          <Width>55</Width>
-        </InputField>
+        <Button name="ПолучитьДанные" id="6"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Получить данные из УТМ</v8:content></v8:item></Title><CommandName>Form.Command.ПолучитьДанные</CommandName></Button>
+        <Button name="ИсправитьОтмененные" id="7"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Исправить отменённые</v8:content></v8:item></Title><CommandName>Form.Command.ИсправитьОтмененные</CommandName></Button>
+        <Button name="СформироватьОтчет" id="8"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Сформировать отчёт</v8:content></v8:item></Title><CommandName>Form.Command.СформироватьОтчет</CommandName></Button>
       </ChildItems>
     </UsualGroup>
 
-    <LabelField name="Подсказка" id="9">
-      <TitleLocation>None</TitleLocation>
-      <Text>
-        <v8:item><v8:lang>ru</v8:lang><v8:content>Выберите УТМ и накладную. После выбора программа подставит FSRAR_ID и WBRegId. При необходимости WBRegId можно исправить вручную.</v8:content></v8:item>
-      </Text>
-    </LabelField>
+    <Table name="ТаблицаТТН" id="10">
+      <DataPath>ТаблицаТТН</DataPath>
+      <Representation>List</Representation><TitleLocation>Top</TitleLocation>
+      <HeightInTableRows>12</HeightInTableRows><Header>true</Header><Footer>false</Footer>
+      <HorizontalLines>true</HorizontalLines><VerticalLines>true</VerticalLines><UseAlternationRowColor>true</UseAlternationRowColor>
+      <SelectionMode>SingleRow</SelectionMode><ChangeRowSet>false</ChangeRowSet><ChangeRowOrder>false</ChangeRowOrder>
+      <AutoInsertNewRow>false</AutoInsertNewRow><CommandBarLocation>None</CommandBarLocation><SearchStringLocation>Top</SearchStringLocation>
+      <ChildItems>
+        <LabelField name="НомерТТН" id="11"><DataPath>ТаблицаТТН.НомерТТН</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+        <LabelField name="ДатаТТН" id="12"><DataPath>ТаблицаТТН.Дата</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+        <LabelField name="Контрагент" id="13"><DataPath>ТаблицаТТН.Контрагент</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+        <LabelField name="Статус1С" id="14"><DataPath>ТаблицаТТН.Статус1С</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+        <LabelField name="СтатусЕГАИС" id="15"><DataPath>ТаблицаТТН.СтатусЕГАИС</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+        <LabelField name="Расхождение" id="16"><DataPath>ТаблицаТТН.Расхождение</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+      </ChildItems>
+    </Table>
 
-    <Button name="АннулироватьТТН" id="10">
-      <Type>UsualButton</Type>
-      <Title>
-        <v8:item><v8:lang>ru</v8:lang><v8:content>Сформировать запрос на аннулирование ТТН</v8:content></v8:item>
-      </Title>
-      <CommandName>Form.Command.ОтправитьЗапрос</CommandName>
-    </Button>
+    <LabelField name="Результат" id="17"><DataPath>Результат</DataPath><TitleLocation>None</TitleLocation></LabelField>
 
-    <LabelField name="Результат" id="11">
-      <DataPath>Результат</DataPath>
-      <TitleLocation>None</TitleLocation>
-    </LabelField>
+    <UsualGroup name="ЖурналИсправлений" id="20">
+      <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Исправление ТТН</v8:content></v8:item></Title>
+      <Representation>None</Representation><ShowTitle>true</ShowTitle>
+      <ChildItems>
+        <Table name="ИсторияИсправлений" id="21">
+          <DataPath>ИсторияИсправлений</DataPath>
+          <Representation>List</Representation><TitleLocation>Top</TitleLocation>
+          <HeightInTableRows>8</HeightInTableRows><Header>true</Header><Footer>false</Footer>
+          <HorizontalLines>true</HorizontalLines><VerticalLines>true</VerticalLines><UseAlternationRowColor>true</UseAlternationRowColor>
+          <SelectionMode>SingleRow</SelectionMode><ChangeRowSet>false</ChangeRowSet><ChangeRowOrder>false</ChangeRowOrder>
+          <AutoInsertNewRow>false</AutoInsertNewRow><CommandBarLocation>None</CommandBarLocation>
+          <ChildItems>
+            <LabelField name="ЖурналТТН" id="22"><DataPath>ИсторияИсправлений.НомерТТН</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+            <LabelField name="ЖурналВремя" id="23"><DataPath>ИсторияИсправлений.Время</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+            <LabelField name="ЖурналСтатус" id="24"><DataPath>ИсторияИсправлений.СтатусИсправления</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+            <LabelField name="ЖурналРезультат" id="25"><DataPath>ИсторияИсправлений.Результат</DataPath><TitleLocation>Top</TitleLocation></LabelField>
+          </ChildItems>
+        </Table>
+      </ChildItems>
+    </UsualGroup>
   </ChildItems>
   <Attributes>
-    <Attribute name="АдресУТМ" id="1">
-      <Title>
-        <v8:item><v8:lang>ru</v8:lang><v8:content>Адрес УТМ</v8:content></v8:item>
-      </Title>
-      <Type>
-        <v8:Type>xs:string</v8:Type>
-        <v8:StringQualifiers>
-          <v8:Length>200</v8:Length>
-          <v8:AllowedLength>Variable</v8:AllowedLength>
-        </v8:StringQualifiers>
-      </Type>
+    <Attribute name="АдресУТМ" id="1"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Адрес УТМ</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>200</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Attribute>
+    <Attribute name="FSRAR_ID" id="2"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>FSRAR_ID организации</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>20</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Attribute>
+    <Attribute name="Результат" id="3"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Результат</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>4000</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Attribute>
+    <Attribute name="ТаблицаТТН" id="4">
+      <Title><v8:item><v8:lang>ru</v8:lang><v8:content>ТТН</v8:content></v8:item></Title>
+      <Type><v8:Type>v8:ValueTable</v8:Type></Type>
+      <Columns>
+        <Column name="НомерТТН" id="1"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Номер ТТН</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>100</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+        <Column name="Дата" id="2"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Дата</v8:content></v8:item></Title><Type><v8:Type>xs:dateTime</v8:Type></Type></Column>
+        <Column name="Контрагент" id="3"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Контрагент</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>300</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+        <Column name="Статус1С" id="4"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Статус в 1С</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>200</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+        <Column name="СтатусЕГАИС" id="5"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Статус в ЕГАИС</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>200</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+        <Column name="Расхождение" id="6"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Расхождение</v8:content></v8:item></Title><Type><v8:Type>xs:boolean</v8:Type></Type></Column>
+        <Column name="WBRegId" id="7"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>WBRegId</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>150</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+        <Column name="ОтмененаПоставщиком" id="8"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Отменена поставщиком</v8:content></v8:item></Title><Type><v8:Type>xs:boolean</v8:Type></Type></Column>
+        <Column name="Документ1С" id="9"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Документ 1С</v8:content></v8:item></Title><Type/></Column>
+        <Column name="Причина" id="10"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Причина</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>1000</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      </Columns>
     </Attribute>
-    <Attribute name="FSRAR_ID" id="2">
-      <Title>
-        <v8:item><v8:lang>ru</v8:lang><v8:content>FSRAR_ID организации</v8:content></v8:item>
-      </Title>
-      <Type>
-        <v8:Type>xs:string</v8:Type>
-        <v8:StringQualifiers>
-          <v8:Length>20</v8:Length>
-          <v8:AllowedLength>Variable</v8:AllowedLength>
-        </v8:StringQualifiers>
-      </Type>
-    </Attribute>
-    <Attribute name="WBRegId" id="3">
-      <Title>
-        <v8:item><v8:lang>ru</v8:lang><v8:content>WBRegId ЕГАИС</v8:content></v8:item>
-      </Title>
-      <Type>
-        <v8:Type>xs:string</v8:Type>
-        <v8:StringQualifiers>
-          <v8:Length>100</v8:Length>
-          <v8:AllowedLength>Variable</v8:AllowedLength>
-        </v8:StringQualifiers>
-      </Type>
-    </Attribute>
-    <Attribute name="ОписаниеНакладной" id="4">
-      <Title>
-        <v8:item><v8:lang>ru</v8:lang><v8:content>Выбранная накладная</v8:content></v8:item>
-      </Title>
-      <Type>
-        <v8:Type>xs:string</v8:Type>
-        <v8:StringQualifiers>
-          <v8:Length>300</v8:Length>
-          <v8:AllowedLength>Variable</v8:AllowedLength>
-        </v8:StringQualifiers>
-      </Type>
-    </Attribute>
-    <Attribute name="Результат" id="5">
-      <Title>
-        <v8:item><v8:lang>ru</v8:lang><v8:content>Результат</v8:content></v8:item>
-      </Title>
-      <Type>
-        <v8:Type>xs:string</v8:Type>
-        <v8:StringQualifiers>
-          <v8:Length>4000</v8:Length>
-          <v8:AllowedLength>Variable</v8:AllowedLength>
-        </v8:StringQualifiers>
-      </Type>
+    <Attribute name="ИсторияИсправлений" id="5">
+      <Title><v8:item><v8:lang>ru</v8:lang><v8:content>История исправлений</v8:content></v8:item></Title>
+      <Type><v8:Type>v8:ValueTable</v8:Type></Type>
+      <Columns>
+        <Column name="НомерТТН" id="1"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>ТТН</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>100</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+        <Column name="Время" id="2"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Время</v8:content></v8:item></Title><Type><v8:Type>xs:dateTime</v8:Type></Type></Column>
+        <Column name="СтатусИсправления" id="3"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Статус исправления</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>100</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+        <Column name="Результат" id="4"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Результат</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>1000</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
+      </Columns>
     </Attribute>
   </Attributes>
   <Commands>
-    <Command name="ВыбратьУТМ" id="1">
-      <Title>
-        <v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать УТМ</v8:content></v8:item>
-      </Title>
-      <Action>ВыбратьУТМ</Action>
-      <CurrentRowUse>DontUse</CurrentRowUse>
-    </Command>
-    <Command name="ВыбратьНакладную" id="2">
-      <Title>
-        <v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать накладную</v8:content></v8:item>
-      </Title>
-      <Action>ВыбратьНакладную</Action>
-      <CurrentRowUse>DontUse</CurrentRowUse>
-    </Command>
-    <Command name="ОтправитьЗапрос" id="3">
-      <Title>
-        <v8:item><v8:lang>ru</v8:lang><v8:content>Сформировать запрос на аннулирование ТТН</v8:content></v8:item>
-      </Title>
-      <Action>ОтправитьЗапрос</Action>
-      <CurrentRowUse>DontUse</CurrentRowUse>
-    </Command>
+    <Command name="ВыбратьУТМ" id="1"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать УТМ</v8:content></v8:item></Title><Action>ВыбратьУТМ</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
+    <Command name="ПолучитьДанные" id="2"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Получить данные из УТМ</v8:content></v8:item></Title><Action>ПолучитьДанные</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
+    <Command name="ИсправитьОтмененные" id="3"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Исправить отменённые</v8:content></v8:item></Title><Action>ИсправитьОтмененные</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
+    <Command name="СформироватьОтчет" id="4"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Сформировать отчёт</v8:content></v8:item></Title><Action>СформироватьОтчет</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
   </Commands>
 </Form>
