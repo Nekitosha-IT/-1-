@@ -1,59 +1,242 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" version="2.17">
-  <Title><v8:item><v8:lang>ru</v8:lang><v8:content>ЕГАИС — Распроведение входящих ТТН</v8:content></v8:item></Title>
-  <AutoTitle>false</AutoTitle>
-  <AutoCommandBar name="ФормаКоманднаяПанель" id="-1"><Autofill>false</Autofill></AutoCommandBar>
-  <ChildItems>
-    <UsualGroup name="УТМ" id="1"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>УТМ</v8:content></v8:item></Title><Representation>None</Representation><ShowTitle>true</ShowTitle><ChildItems>
-      <InputField name="АдресУТМПоле" id="2"><DataPath>АдресУТМ</DataPath><TitleLocation>Left</TitleLocation><Width>35</Width></InputField>
-      <Button name="ПроверитьУТМ" id="3"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Проверить УТМ</v8:content></v8:item></Title><CommandName>Form.Command.ПроверитьУТМ</CommandName></Button>
-      <LabelField name="СтатусУТМ" id="4"><DataPath>СтатусУТМ</DataPath><TitleLocation>None</TitleLocation><Width>30</Width></LabelField>
-      <InputField name="ТаймаутУТМ" id="5"><DataPath>ТаймаутУТМ</DataPath><TitleLocation>Left</TitleLocation><Width>8</Width></InputField>
-    </ChildItems></UsualGroup>
-    <UsualGroup name="НакладныеКоманды" id="10"><Representation>None</Representation><ShowTitle>false</ShowTitle><ChildItems>
-      <Button name="ВыбратьВходящиеНакладные" id="11"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать входящие накладные</v8:content></v8:item></Title><CommandName>Form.Command.ВыбратьВходящиеНакладные</CommandName></Button>
-      <Button name="ВыбратьВсе" id="12"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать все</v8:content></v8:item></Title><CommandName>Form.Command.ВыбратьВсе</CommandName></Button>
-      <Button name="СнятьВыбор" id="13"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Снять выбор</v8:content></v8:item></Title><CommandName>Form.Command.СнятьВыбор</CommandName></Button>
-      <Button name="РаспровестиВыбранные" id="14"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Распровести выбранные</v8:content></v8:item></Title><CommandName>Form.Command.РаспровестиВыбранные</CommandName></Button>
-      <Button name="Отчет" id="15"><Type>UsualButton</Type><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Отчёт</v8:content></v8:item></Title><CommandName>Form.Command.СформироватьОтчет</CommandName></Button>
-    </ChildItems></UsualGroup>
-    <Table name="ТаблицаНакладных" id="20"><DataPath>ТаблицаТТН</DataPath><Representation>List</Representation><TitleLocation>Top</TitleLocation><HeightInTableRows>16</HeightInTableRows><Header>true</Header><Footer>false</Footer><HorizontalLines>true</HorizontalLines><VerticalLines>true</VerticalLines><UseAlternationRowColor>true</UseAlternationRowColor><SelectionMode>SingleRow</SelectionMode><ChangeRowSet>false</ChangeRowSet><ChangeRowOrder>false</ChangeRowOrder><AutoInsertNewRow>false</AutoInsertNewRow><CommandBarLocation>None</CommandBarLocation><ChildItems>
-      <CheckBoxField name="Выбрана" id="21"><DataPath>ТаблицаТТН.Выбрана</DataPath><TitleLocation>Top</TitleLocation><Width>6</Width></CheckBoxField>
-      <LabelField name="Номер" id="22"><DataPath>ТаблицаТТН.Номер</DataPath><TitleLocation>Top</TitleLocation><Width>14</Width></LabelField>
-      <LabelField name="Дата" id="23"><DataPath>ТаблицаТТН.Дата</DataPath><TitleLocation>Top</TitleLocation><Width>18</Width></LabelField>
-      <LabelField name="Поставщик" id="24"><DataPath>ТаблицаТТН.Поставщик</DataPath><TitleLocation>Top</TitleLocation><Width>35</Width></LabelField>
-      <LabelField name="Статус" id="25"><DataPath>ТаблицаТТН.Статус</DataPath><TitleLocation>Top</TitleLocation><Width>40</Width></LabelField>
-      <LabelField name="Ссылка" id="26"><DataPath>ТаблицаТТН.СсылкаНаДокумент</DataPath><TitleLocation>Top</TitleLocation><Width>20</Width></LabelField>
-    </ChildItems></Table>
-    <UsualGroup name="Итог" id="30"><Representation>None</Representation><ShowTitle>true</ShowTitle><ChildItems>
-      <LabelField name="Результат" id="31"><DataPath>Результат</DataPath><TitleLocation>None</TitleLocation><Width>90</Width></LabelField>
-    </ChildItems></UsualGroup>
-  </ChildItems>
-  <Attributes>
-    <Attribute name="АдресУТМ" id="1"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Адрес УТМ</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>200</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Attribute>
-    <Attribute name="ТаймаутУТМ" id="2"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Таймаут, сек</v8:content></v8:item></Title><Type><v8:Type>xs:decimal</v8:Type><v8:NumberQualifiers><v8:Digits>3</v8:Digits><v8:FractionDigits>0</v8:FractionDigits></v8:NumberQualifiers></Type></Attribute>
-    <Attribute name="СтатусУТМ" id="3"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Статус УТМ</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>100</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Attribute>
-    <Attribute name="РаспроведеноКоличество" id="4"><Type><v8:Type>xs:decimal</v8:Type><v8:NumberQualifiers><v8:Digits>10</v8:Digits><v8:FractionDigits>0</v8:FractionDigits></v8:NumberQualifiers></Type></Attribute>
-    <Attribute name="ОшибокКоличество" id="5"><Type><v8:Type>xs:decimal</v8:Type><v8:NumberQualifiers><v8:Digits>10</v8:Digits><v8:FractionDigits>0</v8:FractionDigits></v8:NumberQualifiers></Type></Attribute>
-    <Attribute name="ВсегоОбработано" id="6"><Type><v8:Type>xs:decimal</v8:Type><v8:NumberQualifiers><v8:Digits>10</v8:Digits><v8:FractionDigits>0</v8:FractionDigits></v8:NumberQualifiers></Type></Attribute>
-    <Attribute name="ИндексОбработки" id="7"><Type><v8:Type>xs:decimal</v8:Type><v8:NumberQualifiers><v8:Digits>10</v8:Digits><v8:FractionDigits>0</v8:FractionDigits></v8:NumberQualifiers></Type></Attribute>
-    <Attribute name="ОбработкаЗапущена" id="8"><Type><v8:Type>xs:boolean</v8:Type></Type></Attribute>
-    <Attribute name="Результат" id="9"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Результат</v8:content></v8:item></Title><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>4000</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Attribute>
-    <Attribute name="ТаблицаТТН" id="10"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Входящие накладные</v8:content></v8:item></Title><Type><v8:Type>v8:ValueTable</v8:Type></Type><Columns>
-      <Column name="Выбрана" id="1"><Type><v8:Type>xs:boolean</v8:Type></Type></Column>
-      <Column name="СсылкаНаДокумент" id="2"><Type><v8:Type>cfg:DocumentRef.ЕГАИСЗаказ</v8:Type></Type></Column>
-      <Column name="Номер" id="3"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>100</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
-      <Column name="Дата" id="4"><Type><v8:Type>xs:dateTime</v8:Type></Type></Column>
-      <Column name="Поставщик" id="5"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>300</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
-      <Column name="Статус" id="6"><Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>1000</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type></Column>
-    </Columns></Attribute>
-  </Attributes>
-  <Commands>
-    <Command name="ПроверитьУТМ" id="1"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Проверить УТМ</v8:content></v8:item></Title><Action>ПроверитьУТМ</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
-    <Command name="ВыбратьВходящиеНакладные" id="2"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать входящие накладные</v8:content></v8:item></Title><Action>ВыбратьВходящиеНакладные</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
-    <Command name="ВыбратьВсе" id="3"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать все</v8:content></v8:item></Title><Action>ВыбратьВсе</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
-    <Command name="СнятьВыбор" id="4"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Снять выбор</v8:content></v8:item></Title><Action>СнятьВыбор</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
-    <Command name="РаспровестиВыбранные" id="5"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Распровести выбранные</v8:content></v8:item></Title><Action>РаспровестиВыбранные</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
-    <Command name="СформироватьОтчет" id="6"><Title><v8:item><v8:lang>ru</v8:lang><v8:content>Отчёт</v8:content></v8:item></Title><Action>СформироватьОтчет</Action><CurrentRowUse>DontUse</CurrentRowUse></Command>
-  </Commands>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform"
+    xmlns:app="http://v8.1c.ru/8.2/managed-application/core"
+    xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config"
+    xmlns:ent="http://v8.1c.ru/8.1/data/enterprise"
+    xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform"
+    xmlns:v8="http://v8.1c.ru/8.1/data/core"
+    xmlns:v8ui="http://v8.1c.ru/8.1/data/ui"
+    xmlns:xr="http://v8.1c.ru/8.3/xcf/readable"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="2.17">
+    <Title>
+        <v8:item><v8:lang>ru</v8:lang><v8:content>ЕГАИС — Распроведение входящих ТТН</v8:content></v8:item>
+    </Title>
+    <AutoTitle>false</AutoTitle>
+    <AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+        <Autofill>false</Autofill>
+    </AutoCommandBar>
+    <ChildItems>
+        <UsualGroup name="ГруппаУТМ" id="1">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>УТМ</v8:content></v8:item></Title>
+            <Representation>None</Representation>
+            <ShowTitle>true</ShowTitle>
+            <ExtendedTooltip name="ГруппаУТМРасширеннаяПодсказка" id="100"/>
+            <ChildItems>
+                <InputField name="АдресУТМПоле" id="2">
+                    <DataPath>АдресУТМ</DataPath>
+                    <TitleLocation>Left</TitleLocation>
+                    <Width>35</Width>
+                    <ExtendedTooltip name="АдресУТМРасширеннаяПодсказка" id="101"/>
+                    <ContextMenu name="АдресУТМКонтекстноеМеню" id="102"/>
+                </InputField>
+                <Button name="ПроверитьУТМ" id="3">
+                    <Type>UsualButton</Type>
+                    <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Проверить УТМ</v8:content></v8:item></Title>
+                    <CommandName>Form.Command.ПроверитьУТМ</CommandName>
+                    <ExtendedTooltip name="ПроверитьУТМРасширеннаяПодсказка" id="103"/>
+                </Button>
+                <LabelField name="СтатусУТМПоле" id="4">
+                    <DataPath>СтатусУТМ</DataPath>
+                    <TitleLocation>None</TitleLocation>
+                    <Width>28</Width>
+                    <ExtendedTooltip name="СтатусУТМРасширеннаяПодсказка" id="104"/>
+                </LabelField>
+                <InputField name="ТаймаутУТМПоле" id="5">
+                    <DataPath>ТаймаутУТМ</DataPath>
+                    <TitleLocation>Left</TitleLocation>
+                    <Width>8</Width>
+                    <ExtendedTooltip name="ТаймаутРасширеннаяПодсказка" id="105"/>
+                </InputField>
+            </ChildItems>
+        </UsualGroup>
+        <UsualGroup name="ГруппаНакладные" id="10">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Входящие накладные</v8:content></v8:item></Title>
+            <Representation>None</Representation>
+            <ShowTitle>false</ShowTitle>
+            <ExtendedTooltip name="ГруппаНакладныеРасширеннаяПодсказка" id="106"/>
+            <ChildItems>
+                <Button name="ВыбратьВходящиеНакладные" id="11">
+                    <Type>UsualButton</Type>
+                    <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать входящие накладные</v8:content></v8:item></Title>
+                    <CommandName>Form.Command.ВыбратьВходящиеНакладные</CommandName>
+                    <ExtendedTooltip name="ВыбратьНакладныеРасширеннаяПодсказка" id="107"/>
+                </Button>
+                <Button name="ВыбратьВсе" id="12">
+                    <Type>UsualButton</Type>
+                    <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать все</v8:content></v8:item></Title>
+                    <CommandName>Form.Command.ВыбратьВсе</CommandName>
+                    <ExtendedTooltip name="ВыбратьВсеРасширеннаяПодсказка" id="108"/>
+                </Button>
+                <Button name="СнятьВыбор" id="13">
+                    <Type>UsualButton</Type>
+                    <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Снять выбор</v8:content></v8:item></Title>
+                    <CommandName>Form.Command.СнятьВыбор</CommandName>
+                    <ExtendedTooltip name="СнятьВыборРасширеннаяПодсказка" id="109"/>
+                </Button>
+                <Button name="РаспровестиВыбранные" id="14">
+                    <Type>UsualButton</Type>
+                    <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Распровести выбранные</v8:content></v8:item></Title>
+                    <CommandName>Form.Command.РаспровестиВыбранные</CommandName>
+                    <ExtendedTooltip name="РаспровестиРасширеннаяПодсказка" id="110"/>
+                </Button>
+                <Button name="Отчет" id="15">
+                    <Type>UsualButton</Type>
+                    <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Отчёт</v8:content></v8:item></Title>
+                    <CommandName>Form.Command.СформироватьОтчет</CommandName>
+                    <ExtendedTooltip name="ОтчетРасширеннаяПодсказка" id="111"/>
+                </Button>
+            </ChildItems>
+        </UsualGroup>
+        <Table name="ТаблицаНакладных" id="20">
+            <DataPath>ТаблицаТТН</DataPath>
+            <Representation>List</Representation>
+            <TitleLocation>Top</TitleLocation>
+            <HeightInTableRows>16</HeightInTableRows>
+            <Header>true</Header>
+            <Footer>false</Footer>
+            <HorizontalLines>true</HorizontalLines>
+            <VerticalLines>true</VerticalLines>
+            <UseAlternationRowColor>true</UseAlternationRowColor>
+            <SelectionMode>SingleRow</SelectionMode>
+            <ChangeRowSet>false</ChangeRowSet>
+            <ChangeRowOrder>false</ChangeRowOrder>
+            <AutoInsertNewRow>false</AutoInsertNewRow>
+            <CommandBarLocation>None</CommandBarLocation>
+            <ChildItems>
+                <CheckBoxField name="Выбрана" id="21">
+                    <DataPath>ТаблицаТТН.Выбрана</DataPath>
+                    <TitleLocation>Top</TitleLocation>
+                    <Width>6</Width>
+                    <ExtendedTooltip name="ВыбранаРасширеннаяПодсказка" id="112"/>
+                </CheckBoxField>
+                <LabelField name="Номер" id="22">
+                    <DataPath>ТаблицаТТН.Номер</DataPath>
+                    <TitleLocation>Top</TitleLocation>
+                    <Width>16</Width>
+                </LabelField>
+                <LabelField name="Дата" id="23">
+                    <DataPath>ТаблицаТТН.Дата</DataPath>
+                    <TitleLocation>Top</TitleLocation>
+                    <Width>18</Width>
+                </LabelField>
+                <LabelField name="Поставщик" id="24">
+                    <DataPath>ТаблицаТТН.Поставщик</DataPath>
+                    <TitleLocation>Top</TitleLocation>
+                    <Width>35</Width>
+                </LabelField>
+                <LabelField name="Статус" id="25">
+                    <DataPath>ТаблицаТТН.Статус</DataPath>
+                    <TitleLocation>Top</TitleLocation>
+                    <Width>45</Width>
+                </LabelField>
+            </ChildItems>
+        </Table>
+        <UsualGroup name="ГруппаРезультат" id="30">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Результат</v8:content></v8:item></Title>
+            <Representation>None</Representation>
+            <ShowTitle>true</ShowTitle>
+            <ChildItems>
+                <LabelField name="РезультатПоле" id="31">
+                    <DataPath>Результат</DataPath>
+                    <TitleLocation>None</TitleLocation>
+                    <ExtendedTooltip name="РезультатРасширеннаяПодсказка" id="113"/>
+                    <ContextMenu name="РезультатКонтекстноеМеню" id="114"/>
+                </LabelField>
+            </ChildItems>
+        </UsualGroup>
+    </ChildItems>
+    <Attributes>
+        <Attribute name="АдресУТМ" id="1">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Адрес УТМ</v8:content></v8:item></Title>
+            <Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>200</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type>
+        </Attribute>
+        <Attribute name="ТаймаутУТМ" id="2">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Таймаут, сек</v8:content></v8:item></Title>
+            <Type><v8:Type>xs:decimal</v8:Type><v8:NumberQualifiers><v8:Digits>3</v8:Digits><v8:FractionDigits>0</v8:FractionDigits></v8:NumberQualifiers></Type>
+        </Attribute>
+        <Attribute name="СтатусУТМ" id="3">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Статус УТМ</v8:content></v8:item></Title>
+            <Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>100</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type>
+        </Attribute>
+        <Attribute name="РаспроведеноКоличество" id="4">
+            <Type><v8:Type>xs:decimal</v8:Type><v8:NumberQualifiers><v8:Digits>10</v8:Digits><v8:FractionDigits>0</v8:FractionDigits></v8:NumberQualifiers></Type>
+        </Attribute>
+        <Attribute name="ОшибокКоличество" id="5">
+            <Type><v8:Type>xs:decimal</v8:Type><v8:NumberQualifiers><v8:Digits>10</v8:Digits><v8:FractionDigits>0</v8:FractionDigits></v8:NumberQualifiers></Type>
+        </Attribute>
+        <Attribute name="ВсегоОбработано" id="6">
+            <Type><v8:Type>xs:decimal</v8:Type><v8:NumberQualifiers><v8:Digits>10</v8:Digits><v8:FractionDigits>0</v8:FractionDigits></v8:NumberQualifiers></Type>
+        </Attribute>
+        <Attribute name="ИндексОбработки" id="7">
+            <Type><v8:Type>xs:decimal</v8:Type><v8:NumberQualifiers><v8:Digits>10</v8:Digits><v8:FractionDigits>0</v8:FractionDigits></v8:NumberQualifiers></Type>
+        </Attribute>
+        <Attribute name="ОбработкаЗапущена" id="8">
+            <Type><v8:Type>xs:boolean</v8:Type></Type>
+        </Attribute>
+        <Attribute name="Результат" id="9">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Результат</v8:content></v8:item></Title>
+            <Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>4000</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type>
+        </Attribute>
+        <Attribute name="ТаблицаТТН" id="10">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Входящие накладные</v8:content></v8:item></Title>
+            <Type><v8:Type>v8:ValueTable</v8:Type></Type>
+            <Columns>
+                <Column name="Выбрана" id="1">
+                    <Type><v8:Type>xs:boolean</v8:Type></Type>
+                </Column>
+                <Column name="СсылкаНаДокумент" id="2">
+                    <Type><v8:Type>cfg:DocumentRef.ЕГАИСЗаказ</v8:Type></Type>
+                </Column>
+                <Column name="Номер" id="3">
+                    <Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>100</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type>
+                </Column>
+                <Column name="Дата" id="4">
+                    <Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>30</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type>
+                </Column>
+                <Column name="Поставщик" id="5">
+                    <Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>300</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type>
+                </Column>
+                <Column name="Статус" id="6">
+                    <Type><v8:Type>xs:string</v8:Type><v8:StringQualifiers><v8:Length>1000</v8:Length><v8:AllowedLength>Variable</v8:AllowedLength></v8:StringQualifiers></Type>
+                </Column>
+            </Columns>
+        </Attribute>
+    </Attributes>
+    <Commands>
+        <Command name="ПроверитьУТМ" id="1">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Проверить УТМ</v8:content></v8:item></Title>
+            <ToolTip><v8:item><v8:lang>ru</v8:lang><v8:content>Проверить доступность УТМ через /diagnosis</v8:content></v8:item></ToolTip>
+            <Action>ПроверитьУТМ</Action>
+            <CurrentRowUse>DontUse</CurrentRowUse>
+        </Command>
+        <Command name="ВыбратьВходящиеНакладные" id="2">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать входящие накладные</v8:content></v8:item></Title>
+            <ToolTip><v8:item><v8:lang>ru</v8:lang><v8:content>Загрузить проведённые документы ЕГАИСЗаказ</v8:content></v8:item></ToolTip>
+            <Action>ВыбратьВходящиеНакладные</Action>
+            <CurrentRowUse>DontUse</CurrentRowUse>
+        </Command>
+        <Command name="ВыбратьВсе" id="3">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Выбрать все</v8:content></v8:item></Title>
+            <Action>ВыбратьВсе</Action>
+            <CurrentRowUse>DontUse</CurrentRowUse>
+        </Command>
+        <Command name="СнятьВыбор" id="4">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Снять выбор</v8:content></v8:item></Title>
+            <Action>СнятьВыбор</Action>
+            <CurrentRowUse>DontUse</CurrentRowUse>
+        </Command>
+        <Command name="РаспровестиВыбранные" id="5">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Распровести выбранные</v8:content></v8:item></Title>
+            <ToolTip><v8:item><v8:lang>ru</v8:lang><v8:content>Снять проведение с выбранных ЕГАИСЗаказ</v8:content></v8:item></ToolTip>
+            <Action>РаспровестиВыбранные</Action>
+            <CurrentRowUse>DontUse</CurrentRowUse>
+        </Command>
+        <Command name="СформироватьОтчет" id="6">
+            <Title><v8:item><v8:lang>ru</v8:lang><v8:content>Отчёт</v8:content></v8:item></Title>
+            <Action>СформироватьОтчет</Action>
+            <CurrentRowUse>DontUse</CurrentRowUse>
+        </Command>
+    </Commands>
 </Form>
