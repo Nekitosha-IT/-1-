@@ -13,7 +13,7 @@ $hasBom = $bytes.Length -ge 3 -and $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -a
 
 if (!$hasBom) {
     $text = [Text.Encoding]::UTF8.GetString($bytes)
-    $safeRoot = $OriginalRoot.Replace('''', '''''')
+    $safeRoot = $OriginalRoot.Replace("'", "''")
     $text = $text.Replace('$PSScriptRoot', "'$safeRoot'")
     $tmp = Join-Path $env:TEMP ('egais-patch-' + [Guid]::NewGuid().ToString('N') + '.ps1')
     try {
