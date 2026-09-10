@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.17">
+<ExternalDataProcessor uuid="2d0f4e2c-1b62-4d2a-9c57-9b2d6f8a1e30">
+<InternalInfo><xr:ContainedObject><xr:ClassId>c3831ec8-d8d5-4f93-8a22-f9bfae07327f</xr:ClassId><xr:ObjectId>2d0f4e2c-1b62-4d2a-9c57-9b2d6f8a1e30</xr:ObjectId></xr:ContainedObject><xr:GeneratedType name="ExternalDataProcessorObject.EgaisCancelledTTN2026" category="Object"><xr:TypeId>7f6f5b3a-0b91-4f5c-a1e8-2c4d6b8f9a10</xr:TypeId><xr:ValueId>5b1d7e9f-3c42-4a68-b0d5-8e2f1c6a9b73</xr:ValueId></xr:GeneratedType></InternalInfo>
+<Properties><Name>EgaisCancelledTTN2026</Name><Synonym><v8:item><v8:lang>ru</v8:lang><v8:content>ЕГАИС — Контроль отменённых ТТН</v8:content></v8:item></Synonym><Comment>Проверка статусов ТТН в УТМ и безопасное распроведение отменённых поставщиком документов.</Comment><DefaultForm>ExternalDataProcessor.EgaisCancelledTTN2026.Form.Форма</DefaultForm><AuxiliaryForm/></Properties>
+<ChildObjects><Form>Форма</Form></ChildObjects>
+</ExternalDataProcessor></MetaDataObject>
